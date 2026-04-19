@@ -1,1 +1,251 @@
 
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>你是什麼類型的漫畫家？</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --border: #e5e7eb;
+      --shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: linear-gradient(180deg, #eff6ff 0%, var(--bg) 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: min(860px, 100%);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 24px 24px 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.7rem;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    form {
+      padding: 16px 24px 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    fieldset {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 14px 10px;
+      margin: 0;
+    }
+
+    legend {
+      padding: 0 8px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    label {
+      display: block;
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    label:hover {
+      background: #f8fafc;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .primary:hover { background: var(--primary-hover); }
+
+    .ghost {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .result {
+      margin: 0 24px 24px;
+      border: 1px dashed #93c5fd;
+      background: #eff6ff;
+      border-radius: 12px;
+      padding: 14px;
+      display: none;
+    }
+
+    .result h2 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .result p { margin: 6px 0; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <section class="header">
+      <h1>你是什麼類型的漫畫家？</h1>
+      <p class="subtitle">完成 5 題選擇題，看看你最接近哪一種漫畫創作者風格！</p>
+    </section>
+
+    <form id="quizForm">
+      <fieldset>
+        <legend>1. 你最想畫哪種故事？</legend>
+        <label><input type="radio" name="q1" value="story" required> 角色成長、世界觀完整的長篇冒險</label>
+        <label><input type="radio" name="q1" value="gag"> 輕鬆爆笑、日常梗圖感</label>
+        <label><input type="radio" name="q1" value="art"> 充滿畫面美感與情緒的詩意短篇</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. 你平常最常被誇獎的是？</legend>
+        <label><input type="radio" name="q2" value="story" required> 劇情鋪陳與節奏感</label>
+        <label><input type="radio" name="q2" value="gag"> 點子多、笑點快狠準</label>
+        <label><input type="radio" name="q2" value="art"> 線條與色彩很有個人風格</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. 截稿前一天你會怎麼做？</legend>
+        <label><input type="radio" name="q3" value="story" required> 再確認分鏡和敘事是否順暢</label>
+        <label><input type="radio" name="q3" value="gag"> 邊做邊改，追求最即時的效果</label>
+        <label><input type="radio" name="q3" value="art"> 微調每一格畫面質感到滿意為止</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>4. 遇到創作瓶頸時，你會優先？</legend>
+        <label><input type="radio" name="q4" value="story" required> 研究經典作品，拆解敘事技巧</label>
+        <label><input type="radio" name="q4" value="gag"> 去看迷因或觀察生活找靈感</label>
+        <label><input type="radio" name="q4" value="art"> 逛展覽、拍照、吸收視覺刺激</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>5. 你最理想的讀者留言是？</legend>
+        <label><input type="radio" name="q5" value="story" required> 「劇情太神了，停不下來！」</label>
+        <label><input type="radio" name="q5" value="gag"> 「這梗太好笑，直接分享給朋友！」</label>
+        <label><input type="radio" name="q5" value="art"> 「每張都像海報，想收藏！」</label>
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit" class="primary">看結果</button>
+        <button type="reset" class="ghost">重新作答</button>
+      </div>
+    </form>
+
+    <section class="result" id="result" aria-live="polite">
+      <h2 id="resultTitle"></h2>
+      <p id="resultDesc"></p>
+      <p id="resultTip"></p>
+    </section>
+  </main>
+
+  <script>
+    const quizForm = document.getElementById('quizForm');
+    const resultBox = document.getElementById('result');
+    const resultTitle = document.getElementById('resultTitle');
+    const resultDesc = document.getElementById('resultDesc');
+    const resultTip = document.getElementById('resultTip');
+
+    const profileMap = {
+      story: {
+        title: '你是「劇情建築師型漫畫家」',
+        desc: '你擅長設計完整故事線、角色弧光與世界觀，適合經營連載和長篇敘事。',
+        tip: '建議：把你的大綱拆成章節節點，穩定更新會讓讀者黏著度更高。'
+      },
+      gag: {
+        title: '你是「靈感爆發型漫畫家」',
+        desc: '你反應快、點子密度高，擅長短篇和社群傳播，容易創造病毒式內容。',
+        tip: '建議：建立梗庫與素材庫，靈感來時快速記錄，產出會更穩定。'
+      },
+      art: {
+        title: '你是「畫面美學型漫畫家」',
+        desc: '你對畫面質感與情緒掌控很強，作品辨識度高，適合打造個人品牌。',
+        tip: '建議：固定發佈創作過程，讓讀者看到你的美術思路與成長軌跡。'
+      }
+    };
+
+    function pickType(answers) {
+      const score = { story: 0, gag: 0, art: 0 };
+      answers.forEach((value) => { score[value] += 1; });
+
+      const order = ['story', 'gag', 'art'];
+      return Object.keys(score).sort((a, b) => {
+        if (score[b] !== score[a]) return score[b] - score[a];
+        return order.indexOf(a) - order.indexOf(b);
+      })[0];
+    }
+
+    quizForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(quizForm);
+      const answers = ['q1', 'q2', 'q3', 'q4', 'q5'].map((q) => formData.get(q));
+
+      if (answers.some((a) => !a)) {
+        alert('請先完成所有題目！');
+        return;
+      }
+
+      const type = pickType(answers);
+      const profile = profileMap[type];
+      resultTitle.textContent = profile.title;
+      resultDesc.textContent = profile.desc;
+      resultTip.textContent = profile.tip;
+      resultBox.style.display = 'block';
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    quizForm.addEventListener('reset', () => {
+      resultBox.style.display = 'none';
+      resultTitle.textContent = '';
+      resultDesc.textContent = '';
+      resultTip.textContent = '';
+    });
+  </script>
+</body>
+</html>
